@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.UsersFeedback" table="users_feedback" catalog="igmi2db">
+        <composite-id name="id" class="igami2.DataBase.hibernateconfig.UsersFeedbackId">
+            <key-property name="userid" type="int">
+                <column name="USERID" />
+            </key-property>
+            <key-property name="indvid" type="long">
+                <column name="INDVID" />
+            </key-property>
+        </composite-id>
+        <property name="rating" type="int">
+            <column name="RATING" not-null="true" />
+        </property>
+        <property name="confidence" type="float">
+            <column name="CONFIDENCE" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.Bmpinfo" table="bmpinfo" catalog="igmi2db">
+        <composite-id name="id" class="igami2.DataBase.hibernateconfig.BmpinfoId">
+            <key-property name="b0" type="long">
+                <column name="B0" />
+            </key-property>
+            <key-property name="b1" type="long">
+                <column name="B1" />
+            </key-property>
+            <key-property name="b2" type="long">
+                <column name="B2" />
+            </key-property>
+            <key-property name="b3" type="long">
+                <column name="B3" />
+            </key-property>
+            <key-property name="b4" type="long">
+                <column name="B4" />
+            </key-property>
+            <key-property name="b5" type="long">
+                <column name="B5" />
+            </key-property>
+            <key-property name="b6" type="long">
+                <column name="B6" />
+            </key-property>
+            <key-property name="b7" type="long">
+                <column name="B7" />
+            </key-property>
+            <key-property name="b8" type="long">
+                <column name="B8" />
+            </key-property>
+            <key-property name="b9" type="long">
+                <column name="B9" />
+            </key-property>
+        </composite-id>
+        <property name="bmpid" type="int">
+            <column name="BMPID" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

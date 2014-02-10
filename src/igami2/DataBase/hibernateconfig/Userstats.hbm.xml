@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.Userstats" table="userstats" catalog="igmi2db">
+        <composite-id name="id" class="igami2.DataBase.hibernateconfig.UserstatsId">
+            <key-property name="userid" type="int">
+                <column name="USERID" />
+            </key-property>
+            <key-property name="searchid" type="int">
+                <column name="SEARCHID" />
+            </key-property>
+        </composite-id>
+        <property name="searchBegin" type="timestamp">
+            <column name="SEARCH_BEGIN" length="0" />
+        </property>
+        <property name="searchAbort" type="timestamp">
+            <column name="SEARCH_ABORT" length="0" />
+        </property>
+        <property name="searchFinish" type="timestamp">
+            <column name="SEARCH_FINISH" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

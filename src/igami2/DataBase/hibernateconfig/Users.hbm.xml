@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.Users" table="users" catalog="igmi2db">
+        <id name="userid" type="int">
+            <column name="USERID" />
+            <generator class="assigned" />
+        </id>
+        <property name="fname" type="string">
+            <column name="FNAME" length="100" not-null="true" />
+        </property>
+        <property name="lname" type="string">
+            <column name="LNAME" length="100" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="USERNAME" length="20" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="100" />
+        </property>
+        <property name="tenure" type="java.lang.Byte">
+            <column name="TENURE" />
+        </property>
+        <property name="subbasinOwnFarm" type="string">
+            <column name="SUBBASIN_OWN_FARM" length="200" />
+        </property>
+        <property name="subbasinFarmCrop" type="string">
+            <column name="SUBBASIN_FARM_CROP" length="200" />
+        </property>
+        <property name="subbasinFarmCash" type="string">
+            <column name="SUBBASIN_FARM_CASH" length="200" />
+        </property>
+        <property name="cropKinds" type="string">
+            <column name="CROP_KINDS" length="50" />
+        </property>
+        <property name="cropFarmingDuration" type="java.lang.Integer">
+            <column name="CROP_FARMING_DURATION" />
+        </property>
+        <property name="interestedFarmbill" type="string">
+            <column name="INTERESTED_FARMBILL" length="200" />
+        </property>
+        <property name="interestedPrograms" type="string">
+            <column name="INTERESTED_PROGRAMS" length="200" />
+        </property>
+        <property name="bmp" type="string">
+            <column name="BMP" length="50" />
+        </property>
+        <property name="chosenff" type="string">
+            <column name="CHOSENFF" length="50" />
+        </property>
+        <property name="landforPractice" type="string">
+            <column name="LANDFOR_PRACTICE" length="30" />
+        </property>
+        <property name="practiceSatisfy" type="java.lang.Byte">
+            <column name="PRACTICE_SATISFY" />
+        </property>
+        <property name="practiceFlooding" type="java.lang.Byte">
+            <column name="PRACTICE_FLOODING" />
+        </property>
+        <property name="practiceFertilizer" type="java.lang.Byte">
+            <column name="PRACTICE_FERTILIZER" />
+        </property>
+        <property name="practiceSoilerosion" type="java.lang.Byte">
+            <column name="PRACTICE_SOILEROSION" />
+        </property>
+        <property name="practiceSoilhealth" type="java.lang.Byte">
+            <column name="PRACTICE_SOILHEALTH" />
+        </property>
+        <property name="benefitProgramincentive" type="java.lang.Byte">
+            <column name="BENEFIT_PROGRAMINCENTIVE" />
+        </property>
+        <property name="benefitProductivity" type="java.lang.Byte">
+            <column name="BENEFIT_PRODUCTIVITY" />
+        </property>
+        <property name="benefitRent" type="java.lang.Byte">
+            <column name="BENEFIT_RENT" />
+        </property>
+        <property name="motives" type="string">
+            <column name="MOTIVES" length="100" />
+        </property>
+        <property name="fertilizeruse" type="java.lang.Byte">
+            <column name="FERTILIZERUSE" />
+        </property>
+        <property name="pesticideuse" type="java.lang.Byte">
+            <column name="PESTICIDEUSE" />
+        </property>
+        <property name="averageyield" type="java.lang.Byte">
+            <column name="AVERAGEYIELD" />
+        </property>
+        <property name="bestcornyield" type="java.lang.Double">
+            <column name="BESTCORNYIELD" precision="22" scale="0" />
+        </property>
+        <property name="worstcornyield" type="java.lang.Double">
+            <column name="WORSTCORNYIELD" precision="22" scale="0" />
+        </property>
+        <property name="bestsoybeanyield" type="java.lang.Double">
+            <column name="BESTSOYBEANYIELD" precision="22" scale="0" />
+        </property>
+        <property name="worstsoybeanyield" type="java.lang.Double">
+            <column name="WORSTSOYBEANYIELD" precision="22" scale="0" />
+        </property>
+        <property name="incomesourceFarming" type="java.lang.Byte">
+            <column name="INCOMESOURCE_FARMING" />
+        </property>
+    </class>
+</hibernate-mapping>

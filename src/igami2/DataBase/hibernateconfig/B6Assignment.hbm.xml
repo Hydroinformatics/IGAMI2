@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.B6Assignment" table="b6_assignment" catalog="igmi2db">
+        <id name="bid" type="long">
+            <column name="BID" />
+            <generator class="assigned" />
+        </id>
+        <property name="regionsubbasinid" type="java.lang.Integer">
+            <column name="REGIONSUBBASINID" />
+        </property>
+        <property name="s0" type="java.lang.Double">
+            <column name="S0" precision="22" scale="0" />
+        </property>
+        <property name="s1" type="java.lang.Double">
+            <column name="S1" precision="22" scale="0" />
+        </property>
+        <property name="s2" type="java.lang.Double">
+            <column name="S2" precision="22" scale="0" />
+        </property>
+        <property name="s3" type="java.lang.Double">
+            <column name="S3" precision="22" scale="0" />
+        </property>
+        <property name="s4" type="java.lang.Double">
+            <column name="S4" precision="22" scale="0" />
+        </property>
+        <property name="s5" type="java.lang.Double">
+            <column name="S5" precision="22" scale="0" />
+        </property>
+        <property name="s6" type="java.lang.Double">
+            <column name="S6" precision="22" scale="0" />
+        </property>
+        <property name="s7" type="java.lang.Double">
+            <column name="S7" precision="22" scale="0" />
+        </property>
+        <property name="s8" type="java.lang.Double">
+            <column name="S8" precision="22" scale="0" />
+        </property>
+        <property name="s9" type="java.lang.Double">
+            <column name="S9" precision="22" scale="0" />
+        </property>
+        <property name="s10" type="java.lang.Double">
+            <column name="S10" precision="22" scale="0" />
+        </property>
+        <property name="s11" type="java.lang.Double">
+            <column name="S11" precision="22" scale="0" />
+        </property>
+        <property name="s12" type="java.lang.Double">
+            <column name="S12" precision="22" scale="0" />
+        </property>
+        <property name="s13" type="java.lang.Double">
+            <column name="S13" precision="22" scale="0" />
+        </property>
+        <property name="s14" type="java.lang.Double">
+            <column name="S14" precision="22" scale="0" />
+        </property>
+        <property name="s15" type="java.lang.Double">
+            <column name="S15" precision="22" scale="0" />
+        </property>
+        <property name="s16" type="java.lang.Double">
+            <column name="S16" precision="22" scale="0" />
+        </property>
+        <property name="s17" type="java.lang.Double">
+            <column name="S17" precision="22" scale="0" />
+        </property>
+        <property name="s18" type="java.lang.Double">
+            <column name="S18" precision="22" scale="0" />
+        </property>
+        <property name="s19" type="java.lang.Double">
+            <column name="S19" precision="22" scale="0" />
+        </property>
+        <property name="s20" type="java.lang.Double">
+            <column name="S20" precision="22" scale="0" />
+        </property>
+        <property name="s21" type="java.lang.Double">
+            <column name="S21" precision="22" scale="0" />
+        </property>
+        <property name="s22" type="java.lang.Double">
+            <column name="S22" precision="22" scale="0" />
+        </property>
+        <property name="s23" type="java.lang.Double">
+            <column name="S23" precision="22" scale="0" />
+        </property>
+        <property name="s24" type="java.lang.Double">
+            <column name="S24" precision="22" scale="0" />
+        </property>
+        <property name="s25" type="java.lang.Double">
+            <column name="S25" precision="22" scale="0" />
+        </property>
+        <property name="s26" type="java.lang.Double">
+            <column name="S26" precision="22" scale="0" />
+        </property>
+        <property name="s27" type="java.lang.Double">
+            <column name="S27" precision="22" scale="0" />
+        </property>
+        <property name="s28" type="java.lang.Double">
+            <column name="S28" precision="22" scale="0" />
+        </property>
+        <property name="s29" type="java.lang.Double">
+            <column name="S29" precision="22" scale="0" />
+        </property>
+        <property name="s30" type="java.lang.Double">
+            <column name="S30" precision="22" scale="0" />
+        </property>
+        <property name="s31" type="java.lang.Double">
+            <column name="S31" precision="22" scale="0" />
+        </property>
+        <property name="s32" type="java.lang.Double">
+            <column name="S32" precision="22" scale="0" />
+        </property>
+        <property name="s33" type="java.lang.Double">
+            <column name="S33" precision="22" scale="0" />
+        </property>
+        <property name="s34" type="java.lang.Double">
+            <column name="S34" precision="22" scale="0" />
+        </property>
+        <property name="s35" type="java.lang.Double">
+            <column name="S35" precision="22" scale="0" />
+        </property>
+        <property name="s36" type="java.lang.Double">
+            <column name="S36" precision="22" scale="0" />
+        </property>
+        <property name="s37" type="java.lang.Double">
+            <column name="S37" precision="22" scale="0" />
+        </property>
+        <property name="s38" type="java.lang.Double">
+            <column name="S38" precision="22" scale="0" />
+        </property>
+        <property name="s39" type="java.lang.Double">
+            <column name="S39" precision="22" scale="0" />
+        </property>
+        <property name="s40" type="java.lang.Double">
+            <column name="S40" precision="22" scale="0" />
+        </property>
+        <property name="s41" type="java.lang.Double">
+            <column name="S41" precision="22" scale="0" />
+        </property>
+        <property name="s42" type="java.lang.Double">
+            <column name="S42" precision="22" scale="0" />
+        </property>
+        <property name="s43" type="java.lang.Double">
+            <column name="S43" precision="22" scale="0" />
+        </property>
+        <property name="s44" type="java.lang.Double">
+            <column name="S44" precision="22" scale="0" />
+        </property>
+        <property name="s45" type="java.lang.Double">
+            <column name="S45" precision="22" scale="0" />
+        </property>
+        <property name="s46" type="java.lang.Double">
+            <column name="S46" precision="22" scale="0" />
+        </property>
+        <property name="s47" type="java.lang.Double">
+            <column name="S47" precision="22" scale="0" />
+        </property>
+        <property name="s48" type="java.lang.Double">
+            <column name="S48" precision="22" scale="0" />
+        </property>
+        <property name="s49" type="java.lang.Double">
+            <column name="S49" precision="22" scale="0" />
+        </property>
+        <property name="s50" type="java.lang.Double">
+            <column name="S50" precision="22" scale="0" />
+        </property>
+        <property name="s51" type="java.lang.Double">
+            <column name="S51" precision="22" scale="0" />
+        </property>
+        <property name="s52" type="java.lang.Double">
+            <column name="S52" precision="22" scale="0" />
+        </property>
+        <property name="s53" type="java.lang.Double">
+            <column name="S53" precision="22" scale="0" />
+        </property>
+        <property name="s54" type="java.lang.Double">
+            <column name="S54" precision="22" scale="0" />
+        </property>
+        <property name="s55" type="java.lang.Double">
+            <column name="S55" precision="22" scale="0" />
+        </property>
+        <property name="s56" type="java.lang.Double">
+            <column name="S56" precision="22" scale="0" />
+        </property>
+        <property name="s57" type="java.lang.Double">
+            <column name="S57" precision="22" scale="0" />
+        </property>
+        <property name="s58" type="java.lang.Double">
+            <column name="S58" precision="22" scale="0" />
+        </property>
+        <property name="s59" type="java.lang.Double">
+            <column name="S59" precision="22" scale="0" />
+        </property>
+        <property name="s60" type="java.lang.Double">
+            <column name="S60" precision="22" scale="0" />
+        </property>
+        <property name="s61" type="java.lang.Double">
+            <column name="S61" precision="22" scale="0" />
+        </property>
+        <property name="s62" type="java.lang.Double">
+            <column name="S62" precision="22" scale="0" />
+        </property>
+        <property name="s63" type="java.lang.Double">
+            <column name="S63" precision="22" scale="0" />
+        </property>
+        <property name="s64" type="java.lang.Double">
+            <column name="S64" precision="22" scale="0" />
+        </property>
+        <property name="s65" type="java.lang.Double">
+            <column name="S65" precision="22" scale="0" />
+        </property>
+        <property name="s66" type="java.lang.Double">
+            <column name="S66" precision="22" scale="0" />
+        </property>
+        <property name="s67" type="java.lang.Double">
+            <column name="S67" precision="22" scale="0" />
+        </property>
+        <property name="s68" type="java.lang.Double">
+            <column name="S68" precision="22" scale="0" />
+        </property>
+        <property name="s69" type="java.lang.Double">
+            <column name="S69" precision="22" scale="0" />
+        </property>
+        <property name="s70" type="java.lang.Double">
+            <column name="S70" precision="22" scale="0" />
+        </property>
+        <property name="s71" type="java.lang.Double">
+            <column name="S71" precision="22" scale="0" />
+        </property>
+        <property name="s72" type="java.lang.Double">
+            <column name="S72" precision="22" scale="0" />
+        </property>
+        <property name="s73" type="java.lang.Double">
+            <column name="S73" precision="22" scale="0" />
+        </property>
+        <property name="s74" type="java.lang.Double">
+            <column name="S74" precision="22" scale="0" />
+        </property>
+        <property name="s75" type="java.lang.Double">
+            <column name="S75" precision="22" scale="0" />
+        </property>
+        <property name="s76" type="java.lang.Double">
+            <column name="S76" precision="22" scale="0" />
+        </property>
+        <property name="s77" type="java.lang.Double">
+            <column name="S77" precision="22" scale="0" />
+        </property>
+        <property name="s78" type="java.lang.Double">
+            <column name="S78" precision="22" scale="0" />
+        </property>
+        <property name="s79" type="java.lang.Double">
+            <column name="S79" precision="22" scale="0" />
+        </property>
+        <property name="s80" type="java.lang.Double">
+            <column name="S80" precision="22" scale="0" />
+        </property>
+        <property name="s81" type="java.lang.Double">
+            <column name="S81" precision="22" scale="0" />
+        </property>
+        <property name="s82" type="java.lang.Double">
+            <column name="S82" precision="22" scale="0" />
+        </property>
+        <property name="s83" type="java.lang.Double">
+            <column name="S83" precision="22" scale="0" />
+        </property>
+        <property name="s84" type="java.lang.Double">
+            <column name="S84" precision="22" scale="0" />
+        </property>
+        <property name="s85" type="java.lang.Double">
+            <column name="S85" precision="22" scale="0" />
+        </property>
+        <property name="s86" type="java.lang.Double">
+            <column name="S86" precision="22" scale="0" />
+        </property>
+        <property name="s87" type="java.lang.Double">
+            <column name="S87" precision="22" scale="0" />
+        </property>
+        <property name="s88" type="java.lang.Double">
+            <column name="S88" precision="22" scale="0" />
+        </property>
+        <property name="s89" type="java.lang.Double">
+            <column name="S89" precision="22" scale="0" />
+        </property>
+        <property name="s90" type="java.lang.Double">
+            <column name="S90" precision="22" scale="0" />
+        </property>
+        <property name="s91" type="java.lang.Double">
+            <column name="S91" precision="22" scale="0" />
+        </property>
+        <property name="s92" type="java.lang.Double">
+            <column name="S92" precision="22" scale="0" />
+        </property>
+        <property name="s93" type="java.lang.Double">
+            <column name="S93" precision="22" scale="0" />
+        </property>
+        <property name="s94" type="java.lang.Double">
+            <column name="S94" precision="22" scale="0" />
+        </property>
+        <property name="s95" type="java.lang.Double">
+            <column name="S95" precision="22" scale="0" />
+        </property>
+        <property name="s96" type="java.lang.Double">
+            <column name="S96" precision="22" scale="0" />
+        </property>
+        <property name="s97" type="java.lang.Double">
+            <column name="S97" precision="22" scale="0" />
+        </property>
+        <property name="s98" type="java.lang.Double">
+            <column name="S98" precision="22" scale="0" />
+        </property>
+        <property name="s99" type="java.lang.Double">
+            <column name="S99" precision="22" scale="0" />
+        </property>
+        <property name="s100" type="java.lang.Double">
+            <column name="S100" precision="22" scale="0" />
+        </property>
+        <property name="s101" type="java.lang.Double">
+            <column name="S101" precision="22" scale="0" />
+        </property>
+        <property name="s102" type="java.lang.Double">
+            <column name="S102" precision="22" scale="0" />
+        </property>
+        <property name="s103" type="java.lang.Double">
+            <column name="S103" precision="22" scale="0" />
+        </property>
+        <property name="s104" type="java.lang.Double">
+            <column name="S104" precision="22" scale="0" />
+        </property>
+        <property name="s105" type="java.lang.Double">
+            <column name="S105" precision="22" scale="0" />
+        </property>
+        <property name="s106" type="java.lang.Double">
+            <column name="S106" precision="22" scale="0" />
+        </property>
+        <property name="s107" type="java.lang.Double">
+            <column name="S107" precision="22" scale="0" />
+        </property>
+        <property name="s108" type="java.lang.Double">
+            <column name="S108" precision="22" scale="0" />
+        </property>
+        <property name="s109" type="java.lang.Double">
+            <column name="S109" precision="22" scale="0" />
+        </property>
+        <property name="s110" type="java.lang.Double">
+            <column name="S110" precision="22" scale="0" />
+        </property>
+        <property name="s111" type="java.lang.Double">
+            <column name="S111" precision="22" scale="0" />
+        </property>
+        <property name="s112" type="java.lang.Double">
+            <column name="S112" precision="22" scale="0" />
+        </property>
+        <property name="s113" type="java.lang.Double">
+            <column name="S113" precision="22" scale="0" />
+        </property>
+        <property name="s114" type="java.lang.Double">
+            <column name="S114" precision="22" scale="0" />
+        </property>
+        <property name="s115" type="java.lang.Double">
+            <column name="S115" precision="22" scale="0" />
+        </property>
+        <property name="s116" type="java.lang.Double">
+            <column name="S116" precision="22" scale="0" />
+        </property>
+        <property name="s117" type="java.lang.Double">
+            <column name="S117" precision="22" scale="0" />
+        </property>
+        <property name="s118" type="java.lang.Double">
+            <column name="S118" precision="22" scale="0" />
+        </property>
+        <property name="s119" type="java.lang.Double">
+            <column name="S119" precision="22" scale="0" />
+        </property>
+        <property name="s120" type="java.lang.Double">
+            <column name="S120" precision="22" scale="0" />
+        </property>
+        <property name="s121" type="java.lang.Double">
+            <column name="S121" precision="22" scale="0" />
+        </property>
+        <property name="s122" type="java.lang.Double">
+            <column name="S122" precision="22" scale="0" />
+        </property>
+        <property name="s123" type="java.lang.Double">
+            <column name="S123" precision="22" scale="0" />
+        </property>
+        <property name="s124" type="java.lang.Double">
+            <column name="S124" precision="22" scale="0" />
+        </property>
+        <property name="s125" type="java.lang.Double">
+            <column name="S125" precision="22" scale="0" />
+        </property>
+        <property name="s126" type="java.lang.Double">
+            <column name="S126" precision="22" scale="0" />
+        </property>
+        <property name="s127" type="java.lang.Double">
+            <column name="S127" precision="22" scale="0" />
+        </property>
+        <property name="s128" type="java.lang.Double">
+            <column name="S128" precision="22" scale="0" />
+        </property>
+        <property name="s129" type="java.lang.Double">
+            <column name="S129" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

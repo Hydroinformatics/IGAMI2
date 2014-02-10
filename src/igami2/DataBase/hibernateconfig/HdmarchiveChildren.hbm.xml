@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.HdmarchiveChildren" table="hdmarchive_children" catalog="igmi2db">
+        <composite-id name="id" class="igami2.DataBase.hibernateconfig.HdmarchiveChildrenId">
+            <key-property name="userid" type="int">
+                <column name="USERID" />
+            </key-property>
+            <key-property name="searchid" type="int">
+                <column name="SEARCHID" />
+            </key-property>
+            <key-property name="indvid" type="long">
+                <column name="INDVID" />
+            </key-property>
+            <key-property name="globalSessionid" type="int">
+                <column name="GLOBAL_SESSIONID" />
+            </key-property>
+            <key-property name="localSessionid" type="int">
+                <column name="LOCAL_SESSIONID" />
+            </key-property>
+            <key-property name="sessionid" type="int">
+                <column name="SESSIONID" />
+            </key-property>
+            <key-property name="sessionType" type="byte">
+                <column name="SESSION_TYPE" />
+            </key-property>
+        </composite-id>
+        <property name="rating" type="java.lang.Byte">
+            <column name="RATING" />
+        </property>
+        <property name="confidence" type="java.lang.Double">
+            <column name="CONFIDENCE" precision="22" scale="0" />
+        </property>
+        <property name="chosenff" type="string">
+            <column name="CHOSENFF" length="30" />
+        </property>
+        <property name="regionsubbasinid" type="string">
+            <column name="REGIONSUBBASINID" length="350" />
+        </property>
+        <property name="chosenbmp" type="string">
+            <column name="CHOSENBMP" length="100" />
+        </property>
+        <property name="assignments" type="string">
+            <column name="ASSIGNMENTS" length="10000" />
+        </property>
+        <property name="f0" type="java.lang.Double">
+            <column name="F0" precision="22" scale="0" />
+        </property>
+        <property name="f1" type="java.lang.Double">
+            <column name="F1" precision="22" scale="0" />
+        </property>
+        <property name="f2" type="java.lang.Double">
+            <column name="F2" precision="22" scale="0" />
+        </property>
+        <property name="f3" type="java.lang.Double">
+            <column name="F3" precision="22" scale="0" />
+        </property>
+        <property name="f4" type="java.lang.Double">
+            <column name="F4" precision="22" scale="0" />
+        </property>
+        <property name="f5" type="java.lang.Double">
+            <column name="F5" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

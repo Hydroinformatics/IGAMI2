@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.SessionInfo" table="session_info" catalog="igmi2db">
+        <id name="userid" type="int">
+            <column name="USERID" />
+            <generator class="assigned" />
+        </id>
+        <property name="sessionType" type="int">
+            <column name="SESSION_TYPE" not-null="true" />
+        </property>
+        <property name="searchid" type="string">
+            <column name="SEARCHID" length="100" />
+        </property>
+        <property name="currentSession" type="string">
+            <column name="CURRENT_SESSION" length="100" />
+        </property>
+        <property name="sdmSession" type="java.lang.Byte">
+            <column name="SDM_SESSION" />
+        </property>
+        <property name="nowaiting" type="java.lang.Byte">
+            <column name="NOWAITING" />
+        </property>
+        <property name="leaveforday" type="java.lang.Byte">
+            <column name="LEAVEFORDAY" />
+        </property>
+        <property name="jump" type="java.lang.Byte">
+            <column name="JUMP" />
+        </property>
+        <property name="stopSearch" type="java.lang.Boolean">
+            <column name="STOP_SEARCH" />
+        </property>
+    </class>
+</hibernate-mapping>

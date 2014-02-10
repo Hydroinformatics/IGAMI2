@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2013 10:33:10 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="igami2.DataBase.hibernateconfig.UsersFeedbackTiming" table="users_feedback_timing" catalog="igmi2db">
+        <composite-id name="id" class="igami2.DataBase.hibernateconfig.UsersFeedbackTimingId">
+            <key-property name="userid" type="int">
+                <column name="USERID" />
+            </key-property>
+            <key-property name="id" type="int">
+                <column name="ID" />
+            </key-property>
+        </composite-id>
+        <property name="page" type="java.lang.Integer">
+            <column name="PAGE" />
+        </property>
+        <property name="event" type="string">
+            <column name="EVENT" length="20" />
+        </property>
+        <property name="eventtime" type="timestamp">
+            <column name="EVENTTIME" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>
