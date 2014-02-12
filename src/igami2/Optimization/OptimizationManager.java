@@ -6,11 +6,7 @@ package igami2.Optimization;
 
 import igami2.DataBase.IndividualDesignManager;
 import igami2.Optimization.DPLA.DPLAHandler;
-import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.Individual;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

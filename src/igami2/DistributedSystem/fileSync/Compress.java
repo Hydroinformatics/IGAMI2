@@ -10,7 +10,7 @@ package igami2.DistributedSystem.fileSync;
  */
 import java.io.*;
 import java.rmi.RMISecurityManager;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.zip.*;
 
 public class Compress {
@@ -127,7 +127,7 @@ public class Compress {
                 }
                 
                 DirectoryListing dirlst = new DirectoryListing();
-                Vector lst = dirlst.getDIRList(location+dir);
+                ArrayList lst = dirlst.getDIRList(location+dir);
                 
 
                 int i=0;

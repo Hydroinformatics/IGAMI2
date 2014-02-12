@@ -12,6 +12,7 @@ import java.util.LinkedList;
  *
  * @author VIDYA
  * This class can be used to show 3D visualization of the data
+ * currently it is not used as the web site is providing the visualization to the user but can be used in future
  */
 public class VizualizationManager {
     

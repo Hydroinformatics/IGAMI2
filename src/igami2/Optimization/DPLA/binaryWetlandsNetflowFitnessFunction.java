@@ -21,7 +21,6 @@
 
 package igami2.Optimization.DPLA;
 
-import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.*;
 import java.util.*;
 import java.io.*;
 

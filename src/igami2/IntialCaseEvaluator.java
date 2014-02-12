@@ -11,8 +11,6 @@ import igami2.DistributedSystem.VTimer;
 import igami2.Optimization.DistributedNSGAII.wrestore.SWAT_BMPs_NonInteracOptim.SWAT_BMPs_NSGA2Handler;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author VIDYA

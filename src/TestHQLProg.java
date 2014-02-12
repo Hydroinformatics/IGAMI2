@@ -1,7 +1,6 @@
 
 import igami2.DataBase.HQLQueryManager;
 
-import igami2.DataBase.hibernateconfig.ComputerclusterInfo;
 import igami2.DataBase.hibernateconfig.HdmarchiveChildren;
 import igami2.DataBase.hibernateconfig.NewuserParamters;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author MBS-Admin
+ * @author VIDYA
  */
 public class TestHQLProg {
     HQLQueryManager HQLManager;

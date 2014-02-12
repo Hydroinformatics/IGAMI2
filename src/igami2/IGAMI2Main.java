@@ -9,9 +9,9 @@ import igami2.DataBase.DBManager;
 import igami2.DataBase.hibernateconfig.ComputerclusterInfo;
 import igami2.DataBase.hibernateconfig.NewuserParamters;
 import igami2.DistributedSystem.MasterComputer.HPCController;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Vector;
 
 /**
  *
@@ -20,7 +20,7 @@ import java.util.Vector;
 public class IGAMI2Main {
 
     static User[] ur;
-    public static Vector users; //used by RMI Temp interface for running simulated usrs
+    public static ArrayList users; //used by RMI Temp interface for running simulated usrs
     public static int maxUsers = 150;//max number of allowed users at a time
     public static int countUsers = 0;//count the number of active users at a time
     static String location_newuser = "../SWAT/USER/commondata/";
@@ -42,7 +42,7 @@ public class IGAMI2Main {
     public static void main(String[] args) {
 
         System.out.println("IGMAI2 Working");
-        users = new Vector();
+        users = new ArrayList();
         UsersList = new HashMap();
         UserSystemId = new HashMap();
         dbm = new DBManager();
@@ -111,7 +111,7 @@ public class IGAMI2Main {
             }
 
             //Use to remove a user at runtime if the user's thread crash or some problem happens, prevents restarting the system
-            Vector UserIds = dbm.checkAbortThread(); //safe abort is still needed
+            ArrayList UserIds = dbm.checkAbortThread(); //safe abort is still needed
             if (UserIds.size() > 0) {
                 for (int i = 0; i < UserIds.size(); i++) {
                     int id = Integer.parseInt(UserIds.get(i) + "");

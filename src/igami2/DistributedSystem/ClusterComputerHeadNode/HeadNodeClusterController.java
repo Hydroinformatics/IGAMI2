@@ -12,8 +12,7 @@ package igami2.DistributedSystem.ClusterComputerHeadNode;
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
  */
-
-import igami2.DistributedSystem.ClusterNodes.AgentMain;
+import igami2.DistributedSystem.ClusterNodes.VirtualAgent;
 import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.Individual;
 import igami2.DistributedSystem.DistributedSystem;
 import igami2.DistributedSystem.fileSync.FileHandler;
@@ -25,10 +24,10 @@ import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +35,7 @@ import java.util.logging.Logger;
  *
  * @author Vidya
  */
-public final class MainFrameController extends UnicastRemoteObject implements DistributedSystem {
+public final class HeadNodeClusterController extends UnicastRemoteObject implements DistributedSystem {
 
     public static int NumberOfNodes = 8;
     public static int ActiveNodes;
@@ -54,22 +53,20 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
     public static LinkedList SingleNodeWaitingQueue; //have priority over single node queue
     public static LinkedList MultipleNodeWaitingQueue; //have less priority, but next time move to SingleNodeWaitingQueue to increase priority
     private static int pMax = 4;//Max 20 instances at a time by a node
-    private static AgentData[] Nodes;
+    private static VirtualAgentData[] Nodes;
     private static String masterHost = "rmi://in-geol-esaig06.ads.iu.edu:" + port + "/MasterComputer";
     private static String swatEvalautionFile = "../SWAT/swat_dirs/swat.zip"; //use for normal user evaluation
     private static String swatResearchFile = "../SWAT/RESEARCH/swat_dirs/swat.zip"; //use for reserach type of evaluations
     private static String swatFile = "../SWAT/swat_dirs/swat.zip"; //determined based on file type being received
     private static boolean currenthost;
     public static int ClusterId; //use to uniquely identify the clsuter
-
-    
     private boolean multipleAgents = true; //use multiple agents to run simultaneously
     //private static LinkedList users;
     private static Map users;
     private static int currentAvailNodes;
     private FileHandler handler;
 
-    public MainFrameController(String name) throws RemoteException {
+    public HeadNodeClusterController(String name) throws RemoteException {
         super();
         this.name = name;
 
@@ -90,15 +87,15 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
     public static void initController(boolean sync, boolean copyFiles) throws RemoteException, UnknownHostException, MalformedURLException, AlreadyBoundException {
         //load from config
         String configFile = "config.txt";
-        
+
         if (System.getSecurityManager() == null) {
-        System.setSecurityManager(new RMISecurityManager());
+            System.setSecurityManager(new RMISecurityManager());
         }
         try {
             FileReader f = new FileReader(configFile);
             BufferedReader br = new BufferedReader(f);
             String line = null;
-            Vector strs = new Vector();
+            ArrayList strs = new ArrayList();
             String str;
             String nam = InetAddress.getLocalHost().getHostName();
             currenthost = false;
@@ -113,37 +110,36 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             }
             //host = new String[strs.size()];
 
-            Nodes = new AgentData[strs.size()];//Number of all the Available Nodes
+            Nodes = new VirtualAgentData[strs.size()];//Number of all the Available Nodes
 
 
 
             for (int i = 0; i < strs.size(); i++) {
-                Nodes[i] = new AgentData();//initialize
+                Nodes[i] = new VirtualAgentData();//initialize
                 Nodes[i].HostName = (String) strs.get(i);
             }
             NumberOfNodes = Nodes.length;
 
-            
+
             if (currenthost) {
-                AgentMain.main(null); //use current host
+                VirtualAgent.main(null); //use current host
             }
-            
+
             //System.out.println("No of Active Nodes are "+NumberOfNodes);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        initAgent(sync,copyFiles);
+        initAgent(sync, copyFiles);
 
 
     }
-    
+
     /*
      * Command Linea Arguments
      * 1st one to sync the existing files to swat DIRS
      * 2nd to copy New files to swat DIRS
      */
-
     public static void main(String args[]) {
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
@@ -167,10 +163,12 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
 
             boolean sync = false;
             boolean copyFiles = false;
-            if(args.length>0)
+            if (args.length > 0) {
                 sync = Boolean.parseBoolean(args[0]);
-            if(args.length>1)
+            }
+            if (args.length > 1) {
                 copyFiles = Boolean.parseBoolean(args[1]);
+            }
 
             //name = "rmi://" + name + ":" + port + "/MainFrameController";
             name = "rmi://hydroinf.engr.oregonstate.edu" + ":" + port + "/MainFrameController";
@@ -182,11 +180,11 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             //String str = "//hydroinf.engr.oregonstate.edu:" + port + "/MainFrameController";
 
             //String str = "//149.165.236.202:"+port+"/MainFrameController";
-            MainFrameController ob = new MainFrameController(str);
+            HeadNodeClusterController ob = new HeadNodeClusterController(str);
             Naming.rebind(str, ob);
             System.out.println("MasterComputer Ready and Running");
 
-            initController(sync,copyFiles);
+            initController(sync, copyFiles);
 
             System.out.println("Waiting for job");
 
@@ -210,19 +208,20 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
                 DistributedSystem ob = (DistributedSystem) Naming.lookup(name);
                 //System.out.println(name +" Host prog Not Running");
                 Nodes[i].status = ob.initializeAgent(i);
-                if(Nodes[i].status && copyFiles) //send the swat.zip file to the Agent node
+                if (Nodes[i].status && copyFiles) //send the swat.zip file to the Agent node
                 {
-                    if(!currenthost)
-                        copyNewFilestoAgents(ob,swatFile);
-                    else if(i!=(NumberOfNodes-1)) //the last one won't be copied
-                        copyNewFilestoAgents(ob,swatFile);
-                    System.out.println("DIR Successfully copied to Agent "+i);
-                }
-                else if(Nodes[i].status && sync) //simply sync the existing swat files
+                    if (!currenthost) {
+                        copyNewFilestoAgents(ob, swatFile);
+                    } else if (i != (NumberOfNodes - 1)) //the last one won't be copied
+                    {
+                        copyNewFilestoAgents(ob, swatFile);
+                    }
+                    System.out.println("DIR Successfully copied to Agent " + i);
+                } else if (Nodes[i].status && sync) //simply sync the existing swat files
                 {
                     ob.synDirs();
                 }
-                System.out.println("Agent Active " + name +" with AgentId "+i);
+                System.out.println("Agent Active " + name + " with AgentId " + i);
             } catch (Exception ex) {
                 //System.out.println(name + " Error Connecting");
                 //ex.printStackTrace();
@@ -235,49 +234,45 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             }
         }
         currentAvailNodes = ActiveNodes;
-        System.out.println("Currently Active Agents are "+currentAvailNodes);
+        System.out.println("Currently Active Agents are " + currentAvailNodes);
     }
-    
+
     private static void copyNewFilestoAgents(DistributedSystem ob, String filename) {
-        
+
         File f = new File(filename);
         int sizeofBuf = 1048576;
         FileInputStream in = null;
         try {
-            
+
             in = new FileInputStream(f);
-            int len=0;
+            int len = 0;
             if (ob.openFileWriter(filename)) {
-                
-                
+
+
                 byte[] buff = new byte[sizeofBuf];//create new every time
-                
+
                 while ((len = in.read(buff)) > 0) //not reading the last byte
                 {
 
                     //make RMI call to send the file
-                    if(len==sizeofBuf)
-                    {
+                    if (len == sizeofBuf) {
                         ob.putData(filename, buff);
                         //System.out.println("Successfully copied bytes " + len);
-                    }
-                    else if(len>0)
-                    {
+                    } else if (len > 0) {
                         byte[] buuf = new byte[len];
-                        for(int i=0;i<len;i++)
-                        {
+                        for (int i = 0; i < len; i++) {
                             buuf[i] = buff[i];
                         }
                         ob.putData(filename, buuf);
                         //System.out.println("Successfully copied bytes " + len);                    
                     }
-                } 
-                
+                }
+
                 ob.closeFile(filename);
 
                 ob.synDirs();
-                
-                in.close();                
+
+                in.close();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -301,20 +296,20 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
         }
         //check if sufficient nodes are avail
 
-        
-       
-        
-        if (nodes_needed >1) { //put into multile node queue
+
+
+
+        if (nodes_needed > 1) { //put into multile node queue
             MultipleNodeWaitingQueue.add(a);
-            System.out.println("Put in Multipe Node Waiting Queue User "+UserId);
-         } else //put into waiting queue //only one node is needed
+            System.out.println("Put in Multipe Node Waiting Queue User " + UserId);
+        } else //put into waiting queue //only one node is needed
         {
             SingleNodeWaitingQueue.addLast(a);
-            System.out.println("Put in Waiting Queue User "+UserId);
+            System.out.println("Put in Waiting Queue User " + UserId);
         }
-        
 
-         scheduleAnyWaiting();
+
+        scheduleAnyWaiting();
 
 
         return res;
@@ -324,7 +319,7 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
     public boolean initializeAgent(int id) throws RemoteException {
         //now useful
         ClusterId = id;
-        System.out.println("Initialized with Cluster Id "+id);
+        System.out.println("Initialized with Cluster Id " + id);
         return true;
     }
 
@@ -342,7 +337,7 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
     }
 
     @Override
-    public boolean closeFile(String name) throws RemoteException {       
+    public boolean closeFile(String name) throws RemoteException {
         boolean res = false;
         try {
             handler.closeFile();
@@ -417,30 +412,29 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             scheduleAnyWaiting();
         }
         //schedule any existing waiting Indvs
-            //scheduleAnyWaiting(); //schedule any waiting job
+        //scheduleAnyWaiting(); //schedule any waiting job
         return res;
     }
 
     @Override
     public boolean synDirs() throws RemoteException {
-       
+
         for (int i = 0; i < NumberOfNodes; i++) {
 
             String name = Nodes[i].HostName;
-                   
+
             try {
-                
-                DistributedSystem ob = (DistributedSystem) Naming.lookup(name);               
-               
-                if(Nodes[i].status) //send the swat.zip file to the Agent node
+
+                DistributedSystem ob = (DistributedSystem) Naming.lookup(name);
+
+                if (Nodes[i].status) //send the swat.zip file to the Agent node
                 {
-                    if(Nodes[i].status) //simply sync the existing swat files
+                    if (Nodes[i].status) //simply sync the existing swat files
                     {
                         ob.synDirs();
                     }
                 }
-            }catch(Exception ex)
-            {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
@@ -510,7 +504,7 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
     private void allocateNodes(LinkedList<Individual> a, String type) {
         int UserId = a.get(0).UserId;
 
-        System.out.println("Allocating Nodes for User "+UserId);
+        System.out.println("Allocating Nodes for User " + UserId);
         int len = a.size();
         int nodes_needed = len / pMax;
         //int extr = len%pMax;
@@ -518,7 +512,7 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             nodes_needed++; //one more node is needed for last set of indvs
         }
 
-        if (nodes_needed<= currentAvailNodes && type.compareToIgnoreCase("MULTIPLE")==0) //Multiple nodes Needed
+        if (nodes_needed <= currentAvailNodes && type.compareToIgnoreCase("MULTIPLE") == 0) //Multiple nodes Needed
         {
             //pMax;
 
@@ -556,13 +550,16 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
                     System.out.println("Reserved Node No " + i + " by User " + UserId);
                     SuperComputerRMIMonitorThread agentMonitorThread = new SuperComputerRMIMonitorThread(job[c], Nodes[i].HostName, port);
                     c++;
-                    if(c==nodes_needed)// sufficient nodes are allocated now break the loop. no more nodes needed
+                    if (c == nodes_needed)// sufficient nodes are allocated now break the loop. no more nodes needed
+                    {
                         break;
+                    }
                 }
 
             }
-            if(c!=nodes_needed)
+            if (c != nodes_needed) {
                 System.out.println("Not Enough Nodes allocated"); //need to modify for more unallocated nodes
+            }
             currentAvailNodes = currentAvailNodes - c; //reserved c nodes
 
         } else { //type.compareToIgnoreCase("SINGLE")==0 DEFAULT
@@ -594,16 +591,16 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             LinkedList<Individual> a = (LinkedList<Individual>) SingleNodeWaitingQueue.removeFirst();
             // A single Agent
             if (1 <= currentAvailNodes) // 1 nodes available
-                {
-                
-                
-                    allocateNodes(a,type);
-                } else { //not even a single node available
-                    SingleNodeWaitingQueue.addFirst(a); //put back to the begining, high priority
-                    System.out.println("User Waiting in Queue " + a.get(0).UserId);
-                }
+            {
+
+
+                allocateNodes(a, type);
+            } else { //not even a single node available
+                SingleNodeWaitingQueue.addFirst(a); //put back to the begining, high priority
+                System.out.println("User Waiting in Queue " + a.get(0).UserId);
+            }
         }
-        
+
         if (MultipleNodeWaitingQueue.size() > 0) { //multple node jobs are allocated here, but if sufficient nodes are not available then 
             LinkedList<Individual> a = (LinkedList<Individual>) MultipleNodeWaitingQueue.removeFirst();
 
@@ -615,113 +612,108 @@ public final class MainFrameController extends UnicastRemoteObject implements Di
             }
 
             //in case of multiple Agents
-             if (nodes_needed > 1 && multipleAgents) {
+            if (nodes_needed > 1 && multipleAgents) {
                 if (nodes_needed <= currentAvailNodes) // sufficient nodes available
                 {
                     type = "MULTIPLE";
-                    allocateNodes(a,type);
+                    allocateNodes(a, type);
                 } else {
                     SingleNodeWaitingQueue.addFirst(a); //put back to the begining
                     System.out.println("User moved From Multiple Node Queue to Single Node Queue " + a.get(0).UserId);
                     scheduleAnyWaiting();//try scheduling on Single node
                 }
-            }
-             else // A single Agent //when multipleAgents are not allowed so use only single agent
-             {
-                 if (1 <= currentAvailNodes) // 1 nodes available
+            } else // A single Agent //when multipleAgents are not allowed so use only single agent
+            {
+                if (1 <= currentAvailNodes) // 1 nodes available
                 {
-                    allocateNodes(a,type);
+                    allocateNodes(a, type);
                 } else { //not even a single node available
                     SingleNodeWaitingQueue.addFirst(a); //put back to the begining, high priority
                     System.out.println("User Waiting in Queue " + a.get(0).UserId);
                 }
-                                 
-             }
+
+            }
         }
     }
 
     @Override
-    public synchronized boolean asyncMsg(int id,String type, boolean val) throws RemoteException {
-       
+    public synchronized boolean asyncMsg(int id, String type, boolean val) throws RemoteException {
+
         boolean res = true;
         try {
-            
-            
-            DistributedSystem ob = (DistributedSystem) Naming.lookup(this.masterHost);   
-            
-            if(type.compareToIgnoreCase("SYNCDIR")==0) //got the DIR Syn Msg
+
+
+            DistributedSystem ob = (DistributedSystem) Naming.lookup(this.masterHost);
+
+            if (type.compareToIgnoreCase("SYNCDIR") == 0) //got the DIR Syn Msg
             {
-                if(val)
-                    System.out.println("SWAT Directory Synchronization done sucessfully for Agent "+id);
-                else
-                    System.out.println("SWAT Directory Synchronization Failed for Agent "+id);
+                if (val) {
+                    System.out.println("SWAT Directory Synchronization done sucessfully for Agent " + id);
+                } else {
+                    System.out.println("SWAT Directory Synchronization Failed for Agent " + id);
+                }
                 ob.asyncMsg(id, type, val);
-                
-            }
-            else if(type.compareToIgnoreCase("CLEANDIR")==0) //got the DIR Clean Msg
+
+            } else if (type.compareToIgnoreCase("CLEANDIR") == 0) //got the DIR Clean Msg
             {
-                if(val)
-                    System.out.println("Sucessfully Clean SWAT DIRs for Agent "+id);
-                else
-                    System.out.println("Failed to Clean SWAT DIRs for Agent "+id);    
+                if (val) {
+                    System.out.println("Sucessfully Clean SWAT DIRs for Agent " + id);
+                } else {
+                    System.out.println("Failed to Clean SWAT DIRs for Agent " + id);
+                }
                 ob.asyncMsg(id, type, val);
             }
-            
-            if(type.compareToIgnoreCase("uploadnewfinal")==0)
-            {
+
+            if (type.compareToIgnoreCase("uploadnewfinal") == 0) {
                 this.swatFile = this.swatEvalautionFile;
                 copyDIRAgents(swatFile);
-            }
-            
-            else if(type.compareToIgnoreCase("uploadnewresearch")==0)
-            {
-                 this.swatFile = this.swatResearchFile;
+            } else if (type.compareToIgnoreCase("uploadnewresearch") == 0) {
+                this.swatFile = this.swatResearchFile;
                 copyDIRAgents(swatFile);
-                
-            }
-            else if(type.compareToIgnoreCase("sync")==0)
-            {
+
+            } else if (type.compareToIgnoreCase("sync") == 0) {
                 this.synDirs(); //syn DIRs of all the Agents          
             }
-            
+
             //further msg passing to Master Computer Based on need
-            
-            
+
+
         } catch (NotBoundException ex) {
-            Logger.getLogger(MainFrameController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HeadNodeClusterController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(MainFrameController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HeadNodeClusterController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return res;
     }
-    
-    private void copyDIRAgents(String filename)
-    {
+
+    private void copyDIRAgents(String filename) {
         for (int i = 0; i < NumberOfNodes; i++) {
 
             String name = Nodes[i].HostName;
-                   
+
             try {
-                
+
                 DistributedSystem ob = (DistributedSystem) Naming.lookup(name);
-                
+
                 Nodes[i].status = ob.initializeAgent(i);
-                if(Nodes[i].status) //send the swat.zip file to the Agent node
+                if (Nodes[i].status) //send the swat.zip file to the Agent node
                 {
-                    if(!currenthost)
+                    if (!currenthost) {
                         copyNewFilestoAgents(ob, filename);
-                    else if(i!=(NumberOfNodes-1)) //the last one won't be copied
+                    } else if (i != (NumberOfNodes - 1)) //the last one won't be copied
+                    {
                         copyNewFilestoAgents(ob, filename);
-                    System.out.println("DIR Successfully copied to Agent "+i);
+                    }
+                    System.out.println("DIR Successfully copied to Agent " + i);
                 }
-                
-                
+
+
             } catch (Exception ex) {
                 //System.out.println(name + " Error Connecting");
                 //ex.printStackTrace();
                 //ex.getMessage();
             }
-            
+
         }
     }
 }

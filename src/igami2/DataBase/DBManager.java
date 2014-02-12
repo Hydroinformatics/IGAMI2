@@ -1528,8 +1528,8 @@ public class DBManager {
         }
     }
 
-    public Vector checkAbortThread() {
-        Vector res = new Vector();
+    public ArrayList checkAbortThread() {
+        ArrayList res = new ArrayList();
         
         //String str = "SELECT * FROM " + abortuserthread;
         try{

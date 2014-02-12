@@ -5,7 +5,6 @@
 package igami2.DistributedSystem.ClusterNodes;
 
 import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.Individual;
-import java.util.Date;
 import java.util.LinkedList;
 
 /**

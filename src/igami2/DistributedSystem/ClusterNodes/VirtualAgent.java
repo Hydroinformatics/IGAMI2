@@ -28,7 +28,7 @@ import java.util.logging.Logger;
  *
  * @author VIDYA
  */
-public class AgentMain extends UnicastRemoteObject implements DistributedSystem{
+public class VirtualAgent extends UnicastRemoteObject implements DistributedSystem{
     private static Registry registry;
     public static int port = 11555;
     //private static String MainFrameHost =  "rmi://tempest.ads.iu.edu:"+port+"/MainFrameController";
@@ -46,7 +46,7 @@ public class AgentMain extends UnicastRemoteObject implements DistributedSystem{
     private FileHandler handler;
     
     
-    public AgentMain(String name) throws RemoteException
+    public VirtualAgent(String name) throws RemoteException
     {        
         super();
         this.name = name;
@@ -114,7 +114,7 @@ public class AgentMain extends UnicastRemoteObject implements DistributedSystem{
             String name = InetAddress.getLocalHost().getHostName();
             String str = "rmi://"+name+":"+port+"/AgentMain";
             //MO mO = new MO(Name,T,N);
-            AgentMain agent = new AgentMain(str);
+            VirtualAgent agent = new VirtualAgent(str);
             //String str = name+":"+port+"/Agent";
             str = "//localhost:"+port+"/AgentMain";
             
@@ -256,9 +256,9 @@ public class AgentMain extends UnicastRemoteObject implements DistributedSystem{
             
             
         } catch (NotBoundException ex) {
-            Logger.getLogger(AgentMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VirtualAgent.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(AgentMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VirtualAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
         return res;
     }

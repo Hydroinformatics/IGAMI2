@@ -7,8 +7,6 @@ package igami2.MixedInitiative.neuralnetneuroph;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.learning.SupervisedLearning;
 import org.neuroph.core.learning.SupervisedTrainingElement;
