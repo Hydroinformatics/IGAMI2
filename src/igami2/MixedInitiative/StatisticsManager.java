@@ -7,7 +7,6 @@ package igami2.MixedInitiative;
 import igami2.DataBase.DBManager;
 import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.Individual;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  *

@@ -74,6 +74,8 @@ import java.util.LinkedList;
 /**
  *
  * @author VIDYA
+ * 
+ * Copied from IGAMII code given by Dr Meghna
  */
 public class MannKendall {
 

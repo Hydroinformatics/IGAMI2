@@ -13,7 +13,6 @@ import igami2.MixedInitiative.neuralnetneuroph.NNManager;
 import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.Individual;
 import java.io.*;
 import java.util.LinkedList;
-import java.util.Random;
 
 /**
  *

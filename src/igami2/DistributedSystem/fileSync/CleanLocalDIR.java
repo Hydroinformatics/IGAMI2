@@ -5,7 +5,7 @@
 package igami2.DistributedSystem.fileSync;
 
 import java.io.*;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,7 +34,7 @@ public class CleanLocalDIR {
 
     private static void deleteOldDir(String name) {
         DirectoryListing d = new DirectoryListing();
-        Vector lst = d.getDIRList(name);
+        ArrayList lst = d.getDIRList(name);
         for (int i = 0; i < lst.size(); i++) {
             File f = new File((String) lst.get(i));
             f.delete();//delete all the files

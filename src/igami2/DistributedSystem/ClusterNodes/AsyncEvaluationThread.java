@@ -28,7 +28,7 @@ public class AsyncEvaluationThread implements Runnable{
     @Override
     public void run() {
         
-         indv = AgentMain.ArrayIndvList[ArIdx];
+         indv = VirtualAgent.ArrayIndvList[ArIdx];
         
         
         EvaluateIndividualThread[] para = new EvaluateIndividualThread[p];
@@ -71,7 +71,7 @@ public class AsyncEvaluationThread implements Runnable{
             }
         }
         
-        AgentMain.AsyncReturn(ArIdx); //tell agent to return the result
+        VirtualAgent.AsyncReturn(ArIdx); //tell agent to return the result
 
         System.out.println("Job Completed Sucessfully");        
     }

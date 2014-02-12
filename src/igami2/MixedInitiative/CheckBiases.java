@@ -4,11 +4,9 @@
  */
 package igami2.MixedInitiative;
 
-import igami2.DataBase.DBManager;
 import igami2.DataBase.IndividualDesign;
 import igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2.Individual;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 

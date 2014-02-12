@@ -5,9 +5,7 @@
 package igami2.DistributedSystem.fileSync;
 
 import igami2.DistributedSystem.DistributedSystem;
-import java.io.File;
 import java.rmi.RemoteException;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

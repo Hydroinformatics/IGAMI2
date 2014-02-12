@@ -5,9 +5,7 @@
 package igami2.DistributedSystem.fileSync;
 
 import java.io.File;
-import java.nio.*;
-import java.util.LinkedList;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +13,7 @@ import java.util.Vector;
  */
 public class DirectoryListing {
     
-    Vector list;
+    ArrayList list;
     DirectoryListing()
     {
         
@@ -29,7 +27,7 @@ public class DirectoryListing {
         DirectoryListing d = new DirectoryListing();
         
         
-        Vector v = d.getDIRList(dirname);
+        ArrayList v = d.getDIRList(dirname);
         for(int i=0;i<v.size();i++)
         {
             System.out.println(v.get(i));
@@ -70,7 +68,7 @@ public class DirectoryListing {
         String[] chld = dir.list();
         if (dir.isFile()) {
             System.out.println(fname + "/" + dir.getName());
-            return;
+           
 
         } else if (dir.isDirectory()) {
             System.out.println(fname);//.substring(fname.lastIndexOf("/")));
@@ -80,9 +78,9 @@ public class DirectoryListing {
         }
     }
    
-    public Vector getDIRList(String name)
+    public ArrayList getDIRList(String name)
     {
-        list = new Vector();
+        list = new ArrayList();
         dirclist(name);
         String[] dir = new String[list.size()];
         for(int i=0;i<list.size();i++)
@@ -100,7 +98,7 @@ public class DirectoryListing {
         if (dir.isFile()) {
             //System.out.println(fname);
             list.add(fname);
-            return;
+          
 
         } else if (dir.isDirectory()) {
             //System.out.println(fname);//.substring(fname.lastIndexOf("/")));

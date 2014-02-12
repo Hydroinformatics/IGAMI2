@@ -22,7 +22,6 @@
 package igami2.Optimization.DistributedNSGAII.de.uka.aifb.com.jnsga2;
 
 import java.io.IOException;
-import java.io.FileNotFoundException;
 
 /**
  * This interface describes a fitness function of a genetic algorithm.

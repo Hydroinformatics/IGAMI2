@@ -33,9 +33,9 @@ class EvaluateIndividualThread implements Runnable {
             System.out.println("\nJob Runby Thread " + ArIdx*p+"."+ idx + "." + idy);
             //System.out.println("Running Th:"+idx+"."+idy);
             
-                //Individual individual1 = (Individual) AgentMain.ArrayIndvList[ArIdx].get(idx+idy).clone();
-                Individual individual1 = AgentMain.ArrayIndvList[ArIdx].get(idx+idy);
+                //Individual individual1 = (Individual) VirtualAgent.ArrayIndvList[ArIdx].get(idx+idy).clone();
+                Individual individual1 = VirtualAgent.ArrayIndvList[ArIdx].get(idx+idy);
                 individual1.evaluateIndividual(ArIdx*p+idy);//Evaluate the individual
-                AgentMain.ArrayIndvList[ArIdx].set(idx+idy, individual1);
+                VirtualAgent.ArrayIndvList[ArIdx].set(idx+idy, individual1);
     }
 }

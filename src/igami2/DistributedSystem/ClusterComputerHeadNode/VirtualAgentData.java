@@ -11,7 +11,7 @@ import java.util.LinkedList;
  *
  * @author VIDYA
  */
-public class AgentData {
+public class VirtualAgentData {
     
     public int AgentId=0;
     public String HostName="";
@@ -21,7 +21,7 @@ public class AgentData {
     public boolean [] Users;
     public int[] UserId;//to which user this set belong
     public boolean status = false;
-    public AgentData()
+    public VirtualAgentData()
     {
         Users = new boolean[UserMax];
         UserId = new int[UserMax];

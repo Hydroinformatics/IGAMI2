@@ -6,7 +6,6 @@ package igami2.MixedInitiative.neuralnetneuroph;
 
 import java.io.*;
 import java.util.LinkedList;
-import java.util.Random;
 
 /**
  *

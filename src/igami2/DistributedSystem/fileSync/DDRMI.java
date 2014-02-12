@@ -1,7 +1,7 @@
 package igami2.DistributedSystem.fileSync;
 
-import java.io.*;
-import java.util.Vector;
+import java.util.ArrayList;
+
 
 public interface DDRMI extends java.rmi.Remote{
 	boolean checkid(int id) throws java.rmi.RemoteException;
@@ -16,7 +16,7 @@ public interface DDRMI extends java.rmi.Remote{
         boolean closeFileReader(String name) throws java.rmi.RemoteException;
         boolean delete(String name) throws java.rmi.RemoteException;
         boolean synDirs() throws java.rmi.RemoteException;
-        Vector getDIRList() throws java.rmi.RemoteException;
+        ArrayList getDIRList() throws java.rmi.RemoteException;
         Object startSecretSession(Object ob)throws java.rmi.RemoteException;
         
 }
