@@ -19,7 +19,7 @@ public class TestHQLProg {
     String query = "";
     public TestHQLProg()
     {
-        HQLManager = new HQLQueryManager();
+        HQLManager = new HQLQueryManager(0);
     }
     
     void runCommand()
