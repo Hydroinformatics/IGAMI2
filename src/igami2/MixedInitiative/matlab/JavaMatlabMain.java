@@ -6,8 +6,6 @@ package igami2.MixedInitiative.matlab;
 
 import JavaMat.MatLabMain;
 import com.mathworks.toolbox.javabuilder.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

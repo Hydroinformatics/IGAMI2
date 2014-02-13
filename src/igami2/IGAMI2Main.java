@@ -70,7 +70,7 @@ public class IGAMI2Main {
                 if (u1 == null) //check if the user alread exist in the system
                 {
                     int uSystemId = getaNewSystemId(usr.userId); //local id assigned to this user
-                    User u = new User(usr.userId, usr.chosenFF, usr.host, fromDB, uSystemId);//create a new user running thread and start its tests
+                    User u = new User(usr.userId,usr.watershedId, usr.chosenFF, usr.host, fromDB, uSystemId);//create a new user running thread and start its tests
                     UsersList.put(usr.userId, u); //save the link of the user Thread
                     countUsers++;
                     //System.out.println("A new User is Added into the system with id" + usr.userId);
@@ -95,7 +95,7 @@ public class IGAMI2Main {
                         if (u1 == null) //check if the user alread exist in the system
                         {
                             int uSystemId = getaNewSystemId(usr.userId);
-                            User usrTh = new User(usr.userId, usr.chosenFF, usr.chosenBMP, fromDB, uSystemId);//create a new user and start its tests
+                            User usrTh = new User(usr.userId, usr.watershedId, usr.chosenFF, usr.chosenBMP, fromDB, uSystemId);//create a new user and start its tests
                             UsersList.put(usr.userId, usrTh);
                             //users.add(usr.userId);
                             countUsers++;
@@ -200,5 +200,9 @@ public class IGAMI2Main {
                 HPCController.changeClusterInfo(clusterid, status);
             }
         }
+    }
+
+    public static DBManager getDbm() {
+        return dbm;
     }
 }
