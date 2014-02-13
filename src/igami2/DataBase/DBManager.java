@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 /**
  *
  * @author VIDYA
- * 
  */
 public class DBManager {
 
@@ -29,7 +28,6 @@ public class DBManager {
     int ffCount = 6; //total number of fitness functions
     DBQuery db; //use to query MySql Database through JDBC
     private HQLQueryManager HQLManager; //use the query MySql Database through Hibernate Framework
-    private static HibernateUtil hiberUtil;
     int UserId = 0;
     public int searchId = 0;
     public int[] chosenFF;
@@ -73,16 +71,15 @@ public class DBManager {
 
     public DBManager() {
         db = new DBQuery();
-        hiberUtil = new HibernateUtil();
-        HQLManager = new HQLQueryManager(0); //used by the system, default is 1st DataBase
+        HQLManager = new HQLQueryManager();
     }
 
-    public DBManager(int UserId,int watershedId, int[] chosenFF) {
+    public DBManager(int UserId, int[] chosenFF) {
         this.UserId = UserId;
         db = new DBQuery();
         searchId = getSearchId();
         this.chosenFF = chosenFF;
-        HQLManager = new HQLQueryManager(watershedId);
+        HQLManager = new HQLQueryManager();
     }
     
     public HQLQueryManager getHQLManager()
@@ -609,9 +606,7 @@ public class DBManager {
                 for (int i = 0; i < chosenFF.length; i++) {
                     chosenFF[i] = Integer.parseInt(ffTmp[i]);
                 }
-                
-                int watershedId=0;
-                usr.add(new UserData(uid, watershedId, chosenBMP, chosenFF));
+                usr.add(new UserData(uid, chosenBMP, chosenFF));
                 deleteFromTableUserLevel(newuser, uid);
             }
         } catch (SQLException ex) {

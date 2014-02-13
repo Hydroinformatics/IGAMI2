@@ -12,7 +12,6 @@ import java.io.Serializable;
  */
 public class UserData implements Serializable{
     public int userId; 
-    public int watershedId;
 
     public int [] chosenFF = new int[] {1,1,1,1,1,0,1};
     String host = "";
@@ -40,12 +39,11 @@ public class UserData implements Serializable{
         this.host = host;        
     }  
     
-    public UserData(int userId, int watershedId, int[] chosenBMP, int[] chosenFF)
+    public UserData(int userId, int[] chosenBMP, int[] chosenFF)
     {
         this.userId = userId;
         this.chosenFF = chosenFF;
-        this.chosenBMP = chosenBMP;  
-        this.watershedId = watershedId;
+        this.chosenBMP = chosenBMP;     
       
     }
     

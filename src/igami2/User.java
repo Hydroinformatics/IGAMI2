@@ -17,7 +17,9 @@ import java.util.Date;
  */
 public class User implements Runnable
 {
-
+    
+    private String Name;
+    private String ClientId;
     protected Thread t;
     private MixedInitiativeManager mim;
     private IndividualDesignManager idm;
@@ -39,9 +41,9 @@ public class User implements Runnable
     /*
      * Using the Database
      */
-    public User(int UserId, int watershedId,int [] chosenFF, int[] chosenBMP, boolean fromDB, int uSystemId)
+    public User(int UserId,int [] chosenFF, int[] chosenBMP, boolean fromDB, int uSystemId)
     {
-        dbm = new DBManager(UserId, watershedId, chosenFF);
+        dbm = new DBManager(UserId, chosenFF);
        
         this.chosenFF = chosenFF;
         //set the last function true;
@@ -59,9 +61,9 @@ public class User implements Runnable
     /*
      * Using RMI Temporary interface
      */
-    public User(int UserId, int watershedId, int [] chosenFF, String host, boolean fromDB, int uSystemId)
+    public User(int UserId,int [] chosenFF, String host, boolean fromDB, int uSystemId)
     {
-        dbm = new DBManager(UserId, watershedId, chosenFF);
+        dbm = new DBManager(UserId, chosenFF);
         this.userHost = host;
         this.chosenFF = chosenFF;
         //set the last function true;
