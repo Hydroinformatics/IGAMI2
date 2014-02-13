@@ -15,7 +15,7 @@ public class DataDumpMain {
     
     void dumpData(int UserId, int searchid)
     {
-           dbm = new DBManager(UserId,null);
+           dbm = new DBManager(UserId,0,null);
            dbm.searchId = searchid;
            dbm.dumpData("Real");
     }
